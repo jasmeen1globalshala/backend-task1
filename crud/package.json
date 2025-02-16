@@ -1,0 +1,28 @@
+{
+  "name": "crud",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon ./src/index.ts",
+    "build": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "jasmeen",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "body-parser": "^1.20.3",
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
+    "fs-extra": "^11.3.0",
+    "nodemon": "^3.1.9",
+    "ts-node": "^10.9.2"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.0",
+    "@types/fs-extra": "^11.0.4",
+    "@types/node": "^22.13.4",
+    "typescript": "^5.7.3"
+  }
+}
