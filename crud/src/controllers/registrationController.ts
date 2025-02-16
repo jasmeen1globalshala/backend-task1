@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import fs from "fs-extra";
-import { Course } from "../models/Course";
+import {Course} from "../models/Course";
 import { Registration } from "../models/Registration";
 
 const COURSES_FILE = "src/data/courses.json";
@@ -17,7 +17,8 @@ const saveRegistrations = async (registrations: Registration[]) => fs.writeJson(
 // Register employee for a course
 export const registerEmployee = async (req: Request, res: Response) => {
   const { employee_name, email  } = req.body;
-const {course_id}=req.params
+const {course_id}=req.params;
+console.log("course id is",course_id)
   if (!employee_name || !email || !course_id) {
     return res.status(400).json({ message: "All fields are required" });
   }
