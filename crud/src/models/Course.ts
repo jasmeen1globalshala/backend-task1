@@ -1,4 +1,3 @@
-import {Registration} from './Registration'
 export interface Course {
     id: string; // Format: OFFERING-<course_name>-<instructor>
     course_name: string;

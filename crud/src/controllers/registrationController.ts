@@ -1,24 +1,11 @@
 import { Request, Response } from "express";
-import fs from "fs-extra";
-import {Course} from "../models/Course";
+// import {Course} from "../models/Course";
 import { Registration } from "../models/Registration";
 import { getCourses,getRegistrations,saveCourses,saveRegistrations} from '../utils'
-const COURSES_FILE = "src/data/courses.json";
-const REGISTRATIONS_FILE = "src/data/registrations.json";
-
-// Read data
-// const getCourses = async (): Promise<Course[]> => fs.readJson(COURSES_FILE).catch(() => []);
-// const getRegistrations = async (): Promise<Registration[]> => fs.readJson(REGISTRATIONS_FILE).catch(() => []);
-
-// Save data
-// const saveCourses = async (courses: Course[]) => fs.writeJson(COURSES_FILE, courses);
-// const saveRegistrations = async (registrations: Registration[]) => fs.writeJson(REGISTRATIONS_FILE, registrations);
-
 // Register employee for a course
 export const registerEmployee = async (req: Request, res: Response) => {
   const { employee_name, email  } = req.body;
 const {course_id}=req.params;
-console.log("course id is",course_id)
   if (!employee_name || !email || !course_id) {
     return res.status(400).json({ message: "All fields are required" });
   }

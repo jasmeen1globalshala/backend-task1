@@ -1,22 +1,7 @@
 import { Request, Response } from "express";
-import fs from "fs-extra";
-// import path from "path";
-import { CourseRegistration } from "../models/cancelRegistration";
-import { Registration } from "../models/Registration";
-import { Course } from "../models/Course";
-const REGISTRATIONS_FILE = "src/data/registrations.json";
+import { getCourses,getRegistrations,saveCourses,saveRegistrations} from '../utils'
 
-const getRegistrations = async (): Promise<Registration[]> => fs.readJson(REGISTRATIONS_FILE).catch(() => []);
-const COURSES_FILE = "src/data/courses.json";
 
-// Read courses data
-const getCourses = async (): Promise<Course[]> => {
-  return fs.readJson(COURSES_FILE).catch(() => []);
-};
-const saveCourses = async (courses: Course[]) => {
-  return fs.writeJson(COURSES_FILE, courses);
-};
-const saveRegistrations = async (registrations: Registration[]) => fs.writeJson(REGISTRATIONS_FILE, registrations);
 // Cancel course registration logic
 export const cancelCourseRegistration = async(req: Request, res: Response) => {
     const {registration_id } = req.params;
@@ -67,7 +52,7 @@ export const cancelCourseRegistration = async(req: Request, res: Response) => {
     // If the course is active, cancel it and update status
     registrations[registrationIndex].status = "CANCELLED";
        // Remove the registration_id from the course
-    course.registered_employees = course.registered_employees.filter((id:any) => id !== registration_id);
+    course.registered_employees = course.registered_employees.filter((id) => id !== registration_id);
     // Update the course
     courses[courseIndex]=course
     // Save updated data
